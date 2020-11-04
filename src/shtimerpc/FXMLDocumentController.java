@@ -110,31 +110,31 @@ public class FXMLDocumentController implements Runnable, Initializable {
                 month = format.format(date);
 
                 format = new SimpleDateFormat("EEEE");
-                date = calendar.getTime();
-                day = format.format(date);
+                    date = calendar.getTime();
+                    day = format.format(date);
 
-                //Setting elements to pane:
+                    //Setting elements to pane:
 
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Double days = Math.floor(tsr/86400);
-                        Double hours = Math.floor((tsr/3600)- (days * 24) );
-                        Double minutes = Math.floor(tsr/60 - (days * 1440) -  (hours * 60));
-                        Double seconds =  Math.floor(tsr - (days * 86400) -  (hours * 3600) - (minutes * 60));;
-                        Header.setText(days.longValue() + " Days");
-                        footer.setText(hours.longValue() + " hours " + minutes.longValue() + " minutes " + seconds.longValue() + " seconds");
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Double days = Math.floor(tsr/86400);
+                            Double hours = Math.floor((tsr/3600)- (days * 24) );
+                            Double minutes = Math.floor(tsr/60 - (days * 1440) -  (hours * 60));
+                            Double seconds =  Math.floor(tsr - (days * 86400) -  (hours * 3600) - (minutes * 60));;
+                            Header.setText(days.longValue() + " Days");
+                            footer.setText(hours.longValue() + " hours " + minutes.longValue() + " minutes " + seconds.longValue() + " seconds");
 
-                    }
-                });
+                        }
+                    });
 
-                Thread.sleep(1000);
+                    Thread.sleep(1000);
+                }
+            } catch (Exception e) { //Error check
+                Header.setText("");
+                Header.setText("Error occurred!!");
+                Header.setText("");
             }
-        } catch (Exception e) { //Error check
-            Header.setText("");
-            Header.setText("Error occurred!!");
-            Header.setText("");
-        }
     }
 
 }
